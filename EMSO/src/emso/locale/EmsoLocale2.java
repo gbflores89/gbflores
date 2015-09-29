@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class EmsoLocale {
+public class EmsoLocale2 {
 
 	public enum Type {
 		X, Y
@@ -17,7 +17,7 @@ public class EmsoLocale {
 	public String[] LENTH = { "Width", "Height" };
 	boolean first = true;
 
-	public EmsoLocale(String fileName, Type axis, int trans) throws IOException {
+	public EmsoLocale2(String fileName, Type axis, int trans) throws IOException {
 
 		Locale.setDefault(Locale.US);
 		PrintWriter writer;
@@ -34,19 +34,11 @@ public class EmsoLocale {
 				cur = cur.replace("<" + AXES[axis.ordinal()] + ">", "");
 				cur = cur.replace("</" + AXES[axis.ordinal()] + ">", "");
 				subs = Double.parseDouble(cur);
-				subs = subs + trans;
+				if (subs>1000)
+					subs = subs + 100;
+				
 				cur = "<" + AXES[axis.ordinal()] + ">" + subs + "</" + 
 						AXES[axis.ordinal()] + ">";
-			}
-			if (cur.contains("<" + LENTH[axis.ordinal()] + ">") && first) {
-				first = false;
-				cur = cur.replace("<" + LENTH[axis.ordinal()] + ">", "");
-				cur = cur.replace("</" + LENTH[axis.ordinal()] + ">", "");
-				subs = Double.parseDouble(cur);
-				subs = subs + trans;
-				cur = "<" + LENTH[axis.ordinal()] + ">" + subs + "</" + 
-						LENTH[axis.ordinal()] + ">";
-
 			}
 			writer.println(cur);
 			cur = input.nextLine();
@@ -57,9 +49,9 @@ public class EmsoLocale {
 	}
 
 	public static void main(String[] args) {
-		String file = "C:/Users/Guilherme/workspace/OTS/Arquivos/Com_PID/Teste_Integração/Tela_2_3_4_5_6_slide_20_Y.pfd";
+		String file = "C:/Users/Guilherme/workspace/OTS/Arquivos/Com_PID/Teste_Integração/Tela_2_3_4_5_6_slide_0_X.pfd";
 		try {
-			new EmsoLocale(file, Type.X, 20);
+			new EmsoLocale2(file, Type.Y, 0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
