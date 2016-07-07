@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.Scanner;
 
+
 public class EmsoLocale2 {
 
 	public enum Type {
@@ -49,7 +50,7 @@ public class EmsoLocale2 {
 	}
 
 	public static void main(String[] args) {
-		String file = "C:/Users/Guilherme/workspace/OTS/Arquivos/Com_PID/Teste_Integração/Tela_2_3_4_5_6_slide_0_X.pfd";
+		String file = "C:/Users/Guilherme/workspace/OTS/Arquivos/Com_PID/Teste_Integraï¿½ï¿½o/Tela_2_3_4_5_6_slide_0_X.pfd";
 		try {
 			new EmsoLocale2(file, Type.Y, 0);
 		} catch (IOException e) {

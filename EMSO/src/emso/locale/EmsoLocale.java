@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.Scanner;
 
+
 public class EmsoLocale {
 
 	public enum Type {
@@ -27,6 +28,7 @@ public class EmsoLocale {
 
 		Scanner input = new Scanner(new File(fileName));
 		input.useLocale(Locale.US);
+		System.out.println(input.hasNext());
 		String cur = input.nextLine();
 		double subs = 0;
 		while (input.hasNext()) {
@@ -51,15 +53,16 @@ public class EmsoLocale {
 			writer.println(cur);
 			cur = input.nextLine();
 		}
+		writer.println("</Diagram>");
 		input.close();
 		writer.close();
 
 	}
 
 	public static void main(String[] args) {
-		String file = "C:/Users/Guilherme/workspace/OTS/Arquivos/Com_PID/Teste_Integração/Tela_2_3_4_5_6_slide_20_Y.pfd";
+		String file = "/home/gbflores/workspace/OTS/Modelos/EMSO-OTS2/Arquivos/Tela_1_2_3_4.pfd";
 		try {
-			new EmsoLocale(file, Type.X, 20);
+			new EmsoLocale(file, Type.Y, 2000);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
